@@ -1,0 +1,9 @@
+app = "your-app-name"  # <- replace this with your Fly app name
+
+[build]
+  image = "Dockerfile"
+
+[env]
+
+[experimental]
+  auto_rollback = true
