@@ -28,7 +28,6 @@ CAMPGROUND_IDS = {
     # 251431: "Oregon Inlet Campground LMFAO https://www.recreation.gov/camping/campgrounds/251431"
 }
 
-
 # 🌐 Recreation.gov API headers
 HEADERS = {
     "User-Agent": "Mozilla/5.0",
@@ -46,7 +45,7 @@ def send_ntfy(message):
 
 # 🧪 Manual test push
 def test_notification():
-    msg = "✅ Test notification from your Olympic campsite checker!"
+    msg = "✅ Test notification from your Olympic campsite checker (startup ping)"
     send_ntfy(msg)
 
 # 📡 Fetch monthly availability
@@ -82,8 +81,9 @@ def format_availability(name, avail):
 
 # 🔁 Main polling loop
 def main():
-    seen = {}
+    test_notification()  # Send startup ping always
 
+    seen = {}
     while True:
         for campground_id, name in CAMPGROUND_IDS.items():
             try:
@@ -116,7 +116,7 @@ def main():
         print(f"⏳ Waiting {wait_time} seconds before next poll...")
         time.sleep(wait_time)
 
-# 🧠 Entry point
+# 🧠 Entrypoint
 if __name__ == "__main__":
     if len(sys.argv) > 1 and sys.argv[1] == "-test":
         test_notification()
