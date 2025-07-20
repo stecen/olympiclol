@@ -1,7 +1,6 @@
-app = "your-app-name"  # <- replace this with your Fly app name
+app = "olympiclol"
 
 [build]
-  image = "Dockerfile"
 
 [env]
 
